@@ -1,0 +1,53 @@
+{
+  "name": "@neonwatty/feedback-board",
+  "version": "0.1.0",
+  "description": "Embeddable feedback board for Next.js + Supabase apps",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    },
+    "./actions": {
+      "types": "./dist/actions.d.ts",
+      "import": "./dist/actions.mjs",
+      "require": "./dist/actions.js"
+    },
+    "./migrations/*": "./migrations/*"
+  },
+  "files": [
+    "dist",
+    "migrations"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch"
+  },
+  "peerDependencies": {
+    "@supabase/supabase-js": "^2.0.0",
+    "next": ">=14.0.0",
+    "react": ">=18.0.0",
+    "react-dom": ">=18.0.0",
+    "tailwindcss": ">=4.0.0"
+  },
+  "dependencies": {
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.563.0",
+    "radix-ui": "^1.4.3",
+    "tailwind-merge": "^3.4.0"
+  },
+  "devDependencies": {
+    "@supabase/supabase-js": "^2.95.3",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "next": "16.1.6",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "tsup": "^8.0.0",
+    "typescript": "^5"
+  }
+}
