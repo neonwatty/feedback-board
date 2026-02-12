@@ -14,14 +14,8 @@ interface VoteButtonProps {
   isLoggedIn: boolean;
 }
 
-export function VoteButton({
-  postId,
-  boardSlug,
-  voteCount,
-  hasVoted,
-  isLoggedIn,
-}: VoteButtonProps) {
-  const { actions, loginPath, basePath } = useFeedbackBoard();
+export function VoteButton({ postId, boardSlug, voteCount, hasVoted, isLoggedIn }: VoteButtonProps) {
+  const { actions, loginPath } = useFeedbackBoard();
   const [optimisticCount, setOptimisticCount] = useState(voteCount);
   const [optimisticVoted, setOptimisticVoted] = useState(hasVoted);
   const [isPending, startTransition] = useTransition();
@@ -49,7 +43,7 @@ export function VoteButton({
       disabled={isPending}
       className={cn(
         "flex flex-col items-center gap-0 h-auto py-1.5 px-3 min-w-[3.5rem]",
-        optimisticVoted && "border-primary bg-primary/5 text-primary"
+        optimisticVoted && "border-primary bg-primary/5 text-primary",
       )}
     >
       <ChevronUp className="h-4 w-4" />

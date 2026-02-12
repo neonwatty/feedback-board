@@ -2,13 +2,7 @@
 
 import { FeedbackBoardProvider } from "@neonwatty/feedback-board";
 import type { FeedbackUser } from "@neonwatty/feedback-board";
-import {
-  createBoard,
-  createPost,
-  toggleVote,
-  updatePostStatus,
-  createComment,
-} from "@/lib/feedback-actions";
+import { createBoard, createPost, toggleVote, updatePostStatus, createComment } from "@/lib/feedback-actions";
 
 const actions = {
   createBoard,
@@ -18,20 +12,9 @@ const actions = {
   createComment,
 };
 
-export function FeedbackProviderWrapper({
-  user,
-  children,
-}: {
-  user: FeedbackUser | null;
-  children: React.ReactNode;
-}) {
+export function FeedbackProviderWrapper({ user, children }: { user: FeedbackUser | null; children: React.ReactNode }) {
   return (
-    <FeedbackBoardProvider
-      actions={actions}
-      user={user}
-      basePath=""
-      loginPath="/login"
-    >
+    <FeedbackBoardProvider actions={actions} user={user} basePath="" loginPath="/login">
       {children}
     </FeedbackBoardProvider>
   );

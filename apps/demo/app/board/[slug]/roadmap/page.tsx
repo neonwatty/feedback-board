@@ -5,26 +5,15 @@ import { RoadmapBoard } from "@neonwatty/feedback-board";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 
-export default async function RoadmapPage({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}) {
+export default async function RoadmapPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const supabase = await createClient();
 
-  const { data: board } = await supabase
-    .from("boards")
-    .select("*")
-    .eq("slug", slug)
-    .single();
+  const { data: board } = await supabase.from("boards").select("*").eq("slug", slug).single();
 
   if (!board) notFound();
 
-  const { data: posts } = await supabase
-    .from("posts")
-    .select("*")
-    .eq("board_id", board.id);
+  const { data: posts } = await supabase.from("posts").select("*").eq("board_id", board.id);
 
   return (
     <div className="space-y-6">

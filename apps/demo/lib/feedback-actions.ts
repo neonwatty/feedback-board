@@ -14,7 +14,9 @@ import type { PostStatus } from "@neonwatty/feedback-board";
 
 export async function createBoard(formData: FormData) {
   const supabase = await createClient();
-  const { data: { user } } = await supabase.auth.getUser();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
   if (!user) redirect("/login");
 
   const result = await createBoardAction(supabase, user.id, formData);
@@ -24,7 +26,9 @@ export async function createBoard(formData: FormData) {
 
 export async function createPost(formData: FormData) {
   const supabase = await createClient();
-  const { data: { user } } = await supabase.auth.getUser();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
   if (!user) redirect("/login");
 
   const result = await createPostAction(supabase, user.id, formData);
@@ -34,7 +38,9 @@ export async function createPost(formData: FormData) {
 
 export async function toggleVote(postId: string, boardSlug: string) {
   const supabase = await createClient();
-  const { data: { user } } = await supabase.auth.getUser();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
   if (!user) return { error: "Must be logged in to vote." };
 
   const result = await toggleVoteAction(supabase, user.id, postId, boardSlug);
@@ -44,7 +50,9 @@ export async function toggleVote(postId: string, boardSlug: string) {
 
 export async function updatePostStatus(postId: string, status: PostStatus, boardSlug: string) {
   const supabase = await createClient();
-  const { data: { user } } = await supabase.auth.getUser();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
   if (!user) return { error: "Must be logged in." };
 
   const result = await updatePostStatusAction(supabase, user.id, postId, status, boardSlug);
@@ -55,7 +63,9 @@ export async function updatePostStatus(postId: string, status: PostStatus, board
 
 export async function createComment(formData: FormData) {
   const supabase = await createClient();
-  const { data: { user } } = await supabase.auth.getUser();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
   if (!user) redirect("/login");
 
   const boardSlug = formData.get("board_slug") as string;

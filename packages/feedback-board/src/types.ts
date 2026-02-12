@@ -1,12 +1,6 @@
 import type { SupabaseClient } from "@supabase/supabase-js";
 
-export type PostStatus =
-  | "idea"
-  | "under_review"
-  | "planned"
-  | "in_progress"
-  | "complete"
-  | "closed";
+export type PostStatus = "idea" | "under_review" | "planned" | "in_progress" | "complete" | "closed";
 
 export interface Board {
   id: string;
@@ -79,20 +73,20 @@ export interface FeedbackBoardActions {
 export type CreateBoardFn = (
   supabase: SupabaseClient,
   userId: string,
-  formData: FormData
+  formData: FormData,
 ) => Promise<{ slug?: string; error?: string }>;
 
 export type CreatePostFn = (
   supabase: SupabaseClient,
   userId: string,
-  formData: FormData
+  formData: FormData,
 ) => Promise<{ slug?: string; error?: string }>;
 
 export type ToggleVoteFn = (
   supabase: SupabaseClient,
   userId: string,
   postId: string,
-  boardSlug: string
+  boardSlug: string,
 ) => Promise<{ error?: string } | void>;
 
 export type UpdatePostStatusFn = (
@@ -100,11 +94,11 @@ export type UpdatePostStatusFn = (
   userId: string,
   postId: string,
   status: PostStatus,
-  boardSlug: string
+  boardSlug: string,
 ) => Promise<{ error?: string } | void>;
 
 export type CreateCommentFn = (
   supabase: SupabaseClient,
   userId: string,
-  formData: FormData
+  formData: FormData,
 ) => Promise<{ error?: string } | void>;

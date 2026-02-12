@@ -3,7 +3,7 @@ import type { SupabaseClient } from "@supabase/supabase-js";
 export async function createCommentAction(
   supabase: SupabaseClient,
   userId: string,
-  formData: FormData
+  formData: FormData,
 ): Promise<{ error?: string } | void> {
   const postId = formData.get("post_id") as string;
   const body = formData.get("body") as string;

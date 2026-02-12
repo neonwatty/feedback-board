@@ -26,12 +26,7 @@ export function CommentForm({ postId, boardSlug }: CommentFormProps) {
     <form ref={formRef} action={handleSubmit} className="space-y-3">
       <input type="hidden" name="post_id" value={postId} />
       <input type="hidden" name="board_slug" value={boardSlug} />
-      <Textarea
-        name="body"
-        placeholder="Add a comment..."
-        rows={3}
-        required
-      />
+      <Textarea name="body" placeholder="Add a comment..." rows={3} required />
       <Button type="submit" size="sm" disabled={pending}>
         {pending ? "Posting..." : "Post Comment"}
       </Button>

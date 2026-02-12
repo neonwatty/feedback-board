@@ -1,22 +1,13 @@
 import { createClient } from "@/lib/supabase/server";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import {
-  VoteButton,
-  StatusBadge,
-  CommentList,
-  CommentForm,
-} from "@neonwatty/feedback-board";
+import { VoteButton, StatusBadge, CommentList, CommentForm } from "@neonwatty/feedback-board";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { ArrowLeft } from "lucide-react";
 import type { CommentWithAuthor, PostStatus } from "@neonwatty/feedback-board";
 
-export default async function PostDetailPage({
-  params,
-}: {
-  params: Promise<{ slug: string; id: string }>;
-}) {
+export default async function PostDetailPage({ params }: { params: Promise<{ slug: string; id: string }> }) {
   const { slug, id } = await params;
   const supabase = await createClient();
 
@@ -24,23 +15,14 @@ export default async function PostDetailPage({
     data: { user },
   } = await supabase.auth.getUser();
 
-  const { data: post } = await supabase
-    .from("posts")
-    .select("*")
-    .eq("id", id)
-    .single();
+  const { data: post } = await supabase.from("posts").select("*").eq("id", id).single();
 
   if (!post) notFound();
 
   // Check if user voted
   let hasVoted = false;
   if (user) {
-    const { data: vote } = await supabase
-      .from("votes")
-      .select("id")
-      .eq("post_id", id)
-      .eq("user_id", user.id)
-      .single();
+    const { data: vote } = await supabase.from("votes").select("id").eq("post_id", id).eq("user_id", user.id).single();
     hasVoted = !!vote;
   }
 
@@ -57,8 +39,7 @@ export default async function PostDetailPage({
   }));
 
   // Get post author email
-  const postAuthorEmail =
-    post.author_id === user?.id ? user?.email : null;
+  const postAuthorEmail = post.author_id === user?.id ? user?.email : null;
 
   return (
     <div className="mx-auto max-w-2xl space-y-6">
@@ -82,25 +63,18 @@ export default async function PostDetailPage({
           <div className="flex items-center gap-3">
             <StatusBadge status={post.status as PostStatus} />
             <span className="text-sm text-muted-foreground">
-              {postAuthorEmail ?? "Anonymous"} &middot;{" "}
-              {new Date(post.created_at).toLocaleDateString()}
+              {postAuthorEmail ?? "Anonymous"} &middot; {new Date(post.created_at).toLocaleDateString()}
             </span>
           </div>
         </div>
       </div>
 
-      {post.description && (
-        <p className="whitespace-pre-wrap text-sm leading-relaxed">
-          {post.description}
-        </p>
-      )}
+      {post.description && <p className="whitespace-pre-wrap text-sm leading-relaxed">{post.description}</p>}
 
       <Separator />
 
       <div className="space-y-4">
-        <h2 className="text-lg font-semibold">
-          Comments ({comments.length})
-        </h2>
+        <h2 className="text-lg font-semibold">Comments ({comments.length})</h2>
         <CommentList comments={comments} />
         {user ? (
           <CommentForm postId={id} boardSlug={slug} />

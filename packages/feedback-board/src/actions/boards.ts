@@ -3,7 +3,7 @@ import type { SupabaseClient } from "@supabase/supabase-js";
 export async function createBoardAction(
   supabase: SupabaseClient,
   userId: string,
-  formData: FormData
+  formData: FormData,
 ): Promise<{ slug?: string; error?: string }> {
   const name = formData.get("name") as string;
   const description = formData.get("description") as string;

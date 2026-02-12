@@ -5,11 +5,7 @@ import { PostForm } from "@neonwatty/feedback-board";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 
-export default async function NewPostPage({
-  params,
-}: {
-  params: Promise<{ slug: string }>;
-}) {
+export default async function NewPostPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const supabase = await createClient();
 
@@ -21,11 +17,7 @@ export default async function NewPostPage({
     redirect(`/login?next=/board/${slug}/new`);
   }
 
-  const { data: board } = await supabase
-    .from("boards")
-    .select("*")
-    .eq("slug", slug)
-    .single();
+  const { data: board } = await supabase.from("boards").select("*").eq("slug", slug).single();
 
   if (!board) notFound();
 
@@ -39,9 +31,7 @@ export default async function NewPostPage({
           </Link>
         </Button>
         <h1 className="text-2xl font-bold tracking-tight">Submit Feedback</h1>
-        <p className="text-muted-foreground">
-          Share your idea or feature request
-        </p>
+        <p className="text-muted-foreground">Share your idea or feature request</p>
       </div>
       <PostForm boardId={board.id} />
     </div>

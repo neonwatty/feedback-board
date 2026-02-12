@@ -10,22 +10,15 @@ interface RoadmapBoardProps {
 }
 
 // Show only active statuses in roadmap (not idea/closed)
-const ROADMAP_STATUSES: PostStatus[] = [
-  "under_review",
-  "planned",
-  "in_progress",
-  "complete",
-];
+const ROADMAP_STATUSES: PostStatus[] = ["under_review", "planned", "in_progress", "complete"];
 
 export function RoadmapBoard({ posts, boardSlug }: RoadmapBoardProps) {
   const grouped = ROADMAP_STATUSES.reduce(
     (acc, status) => {
-      acc[status] = posts
-        .filter((p) => p.status === status)
-        .sort((a, b) => b.vote_count - a.vote_count);
+      acc[status] = posts.filter((p) => p.status === status).sort((a, b) => b.vote_count - a.vote_count);
       return acc;
     },
-    {} as Record<PostStatus, Post[]>
+    {} as Record<PostStatus, Post[]>,
   );
 
   return (
@@ -34,15 +27,11 @@ export function RoadmapBoard({ posts, boardSlug }: RoadmapBoardProps) {
         <div key={status} className="space-y-3">
           <div className="flex items-center gap-2">
             <StatusBadge status={status} />
-            <span className="text-sm text-muted-foreground">
-              {grouped[status].length}
-            </span>
+            <span className="text-sm text-muted-foreground">{grouped[status].length}</span>
           </div>
           <div className="space-y-2">
             {grouped[status].length === 0 ? (
-              <p className="rounded-lg border border-dashed p-4 text-center text-xs text-muted-foreground">
-                No items
-              </p>
+              <p className="rounded-lg border border-dashed p-4 text-center text-xs text-muted-foreground">No items</p>
             ) : (
               grouped[status].map((post) => (
                 <FeedbackLink key={post.id} href={`/board/${boardSlug}/post/${post.id}`}>

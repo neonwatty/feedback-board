@@ -4,7 +4,7 @@ import type { PostStatus } from "../types";
 export async function createPostAction(
   supabase: SupabaseClient,
   userId: string,
-  formData: FormData
+  formData: FormData,
 ): Promise<{ slug?: string; error?: string }> {
   const boardId = formData.get("board_id") as string;
   const title = formData.get("title") as string;
@@ -22,11 +22,7 @@ export async function createPostAction(
   }
 
   // Get the board slug for redirect
-  const { data: board } = await supabase
-    .from("boards")
-    .select("slug")
-    .eq("id", boardId)
-    .single();
+  const { data: board } = await supabase.from("boards").select("slug").eq("id", boardId).single();
 
   return { slug: board?.slug };
 }
@@ -35,7 +31,7 @@ export async function toggleVoteAction(
   supabase: SupabaseClient,
   userId: string,
   postId: string,
-  boardSlug: string
+  _boardSlug: string,
 ): Promise<{ error?: string } | void> {
   // Check if already voted
   const { data: existing } = await supabase
@@ -57,15 +53,12 @@ export async function toggleVoteAction(
 
 export async function updatePostStatusAction(
   supabase: SupabaseClient,
-  userId: string,
+  _userId: string,
   postId: string,
   status: PostStatus,
-  boardSlug: string
+  _boardSlug: string,
 ): Promise<{ error?: string } | void> {
-  const { error } = await supabase
-    .from("posts")
-    .update({ status })
-    .eq("id", postId);
+  const { error } = await supabase.from("posts").update({ status }).eq("id", postId);
 
   if (error) {
     return { error: "Failed to update status." };

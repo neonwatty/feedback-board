@@ -26,9 +26,7 @@ export default async function AdminPage() {
       </div>
 
       {(boards ?? []).length === 0 ? (
-        <p className="text-sm text-muted-foreground">
-          You haven&apos;t created any boards yet.
-        </p>
+        <p className="text-sm text-muted-foreground">You haven&apos;t created any boards yet.</p>
       ) : (
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {(boards ?? []).map((board) => (
@@ -41,9 +39,7 @@ export default async function AdminPage() {
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-sm text-muted-foreground">
-                    Manage posts and statuses
-                  </p>
+                  <p className="text-sm text-muted-foreground">Manage posts and statuses</p>
                 </CardContent>
               </Card>
             </Link>

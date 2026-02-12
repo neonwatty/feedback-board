@@ -34,12 +34,7 @@ export function PostForm({ boardId }: { boardId: string }) {
         <label htmlFor="title" className="text-sm font-medium">
           Title
         </label>
-        <Input
-          id="title"
-          name="title"
-          placeholder="Short, descriptive title"
-          required
-        />
+        <Input id="title" name="title" placeholder="Short, descriptive title" required />
       </div>
       <div className="space-y-2">
         <label htmlFor="description" className="text-sm font-medium">

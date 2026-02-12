@@ -4,14 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useFeedbackBoard } from "../../provider";
 import { Button } from "../ui/button";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "../ui/dialog";
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "../ui/dialog";
 import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
 import { Plus } from "lucide-react";
@@ -58,23 +51,13 @@ export function CreateBoardDialog() {
             <label htmlFor="name" className="text-sm font-medium">
               Name
             </label>
-            <Input
-              id="name"
-              name="name"
-              placeholder="e.g. Feature Requests"
-              required
-            />
+            <Input id="name" name="name" placeholder="e.g. Feature Requests" required />
           </div>
           <div className="space-y-2">
             <label htmlFor="description" className="text-sm font-medium">
               Description
             </label>
-            <Textarea
-              id="description"
-              name="description"
-              placeholder="What is this board for?"
-              rows={3}
-            />
+            <Textarea id="description" name="description" placeholder="What is this board for?" rows={3} />
           </div>
           {error && <p className="text-sm text-destructive">{error}</p>}
           <Button type="submit" className="w-full" disabled={pending}>
