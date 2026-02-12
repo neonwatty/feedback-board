@@ -38,7 +38,7 @@ export async function createPost(formData: FormData) {
     .single();
 
   revalidatePath(`/board/${board?.slug}`);
-  redirect(`/board/${board?.slug}`);
+  return { slug: board?.slug };
 }
 
 export async function toggleVote(postId: string, boardSlug: string) {

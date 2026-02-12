@@ -36,5 +36,5 @@ export async function createBoard(formData: FormData) {
   }
 
   revalidatePath("/");
-  redirect(`/board/${slug}`);
+  return { slug };
 }

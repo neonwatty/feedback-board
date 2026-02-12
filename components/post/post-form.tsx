@@ -1,12 +1,14 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { createPost } from "@/lib/actions/posts";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 
 export function PostForm({ boardId }: { boardId: string }) {
+  const router = useRouter();
   const [error, setError] = useState<string | null>(null);
   const [pending, setPending] = useState(false);
 
@@ -17,6 +19,10 @@ export function PostForm({ boardId }: { boardId: string }) {
     if (result?.error) {
       setError(result.error);
       setPending(false);
+      return;
+    }
+    if (result?.slug) {
+      router.push(`/board/${result.slug}`);
     }
   };
 
