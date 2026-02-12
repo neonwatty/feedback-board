@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { createBoard } from "@/lib/actions/boards";
 import { Button } from "@/components/ui/button";
 import {
@@ -16,6 +17,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Plus } from "lucide-react";
 
 export function CreateBoardDialog() {
+  const router = useRouter();
   const [open, setOpen] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [pending, setPending] = useState(false);
@@ -27,6 +29,11 @@ export function CreateBoardDialog() {
     if (result?.error) {
       setError(result.error);
       setPending(false);
+      return;
+    }
+    if (result?.slug) {
+      setOpen(false);
+      router.push(`/board/${result.slug}`);
     }
   };
 
