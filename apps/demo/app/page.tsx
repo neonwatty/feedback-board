@@ -24,9 +24,7 @@ export default async function HomePage() {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-3xl font-bold tracking-tight">Boards</h1>
-          <p className="text-muted-foreground">
-            Browse boards and submit your feedback
-          </p>
+          <p className="text-muted-foreground">Browse boards and submit your feedback</p>
         </div>
         {user && <CreateBoardDialog />}
       </div>
@@ -36,9 +34,7 @@ export default async function HomePage() {
           <MessageSquare className="mb-4 h-10 w-10 text-muted-foreground" />
           <h2 className="text-lg font-semibold">No boards yet</h2>
           <p className="mt-1 text-sm text-muted-foreground">
-            {user
-              ? "Create your first board to start collecting feedback."
-              : "Sign in to create a board."}
+            {user ? "Create your first board to start collecting feedback." : "Sign in to create a board."}
           </p>
         </div>
       ) : (

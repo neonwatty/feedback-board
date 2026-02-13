@@ -28,14 +28,7 @@ const statusConfig: Record<PostStatus, { label: string; className: string }> = {
   },
 };
 
-export const STATUS_OPTIONS: PostStatus[] = [
-  "idea",
-  "under_review",
-  "planned",
-  "in_progress",
-  "complete",
-  "closed",
-];
+export const STATUS_OPTIONS: PostStatus[] = ["idea", "under_review", "planned", "in_progress", "complete", "closed"];
 
 export function StatusBadge({ status }: { status: PostStatus }) {
   const config = statusConfig[status];

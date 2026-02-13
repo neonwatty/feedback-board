@@ -9,9 +9,7 @@ export function BoardCard({ board }: { board: BoardWithPostCount }) {
       <Card className="transition-colors hover:border-foreground/20">
         <CardHeader>
           <CardTitle className="text-lg">{board.name}</CardTitle>
-          {board.description && (
-            <CardDescription>{board.description}</CardDescription>
-          )}
+          {board.description && <CardDescription>{board.description}</CardDescription>}
         </CardHeader>
         <CardContent>
           <div className="flex items-center gap-1 text-sm text-muted-foreground">

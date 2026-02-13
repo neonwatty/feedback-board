@@ -34,39 +34,22 @@ export function PostList({ posts, boardSlug, isLoggedIn }: PostListProps) {
     <div className="space-y-4">
       <div className="flex items-center gap-2">
         <span className="text-sm text-muted-foreground">Sort by:</span>
-        <Button
-          variant={sort === "votes" ? "secondary" : "ghost"}
-          size="sm"
-          onClick={() => setSort("votes")}
-        >
+        <Button variant={sort === "votes" ? "secondary" : "ghost"} size="sm" onClick={() => setSort("votes")}>
           <ArrowUpDown className="mr-1 h-3 w-3" />
           Most votes
         </Button>
-        <Button
-          variant={sort === "newest" ? "secondary" : "ghost"}
-          size="sm"
-          onClick={() => setSort("newest")}
-        >
+        <Button variant={sort === "newest" ? "secondary" : "ghost"} size="sm" onClick={() => setSort("newest")}>
           <Clock className="mr-1 h-3 w-3" />
           Newest
         </Button>
-        <Button
-          variant={sort === "oldest" ? "secondary" : "ghost"}
-          size="sm"
-          onClick={() => setSort("oldest")}
-        >
+        <Button variant={sort === "oldest" ? "secondary" : "ghost"} size="sm" onClick={() => setSort("oldest")}>
           <Filter className="mr-1 h-3 w-3" />
           Oldest
         </Button>
       </div>
       <div className="space-y-2">
         {sorted.map((post) => (
-          <PostCard
-            key={post.id}
-            post={post}
-            boardSlug={boardSlug}
-            isLoggedIn={isLoggedIn}
-          />
+          <PostCard key={post.id} post={post} boardSlug={boardSlug} isLoggedIn={isLoggedIn} />
         ))}
       </div>
     </div>

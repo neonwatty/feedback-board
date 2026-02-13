@@ -2,13 +2,7 @@
 
 import { useTransition } from "react";
 import { useFeedbackBoard } from "../../provider";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "../ui/select";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
 import { STATUS_OPTIONS, getStatusLabel } from "../status/status-badge";
 import type { PostStatus } from "../../types";
 
@@ -18,11 +12,7 @@ interface PostStatusSelectProps {
   boardSlug: string;
 }
 
-export function PostStatusSelect({
-  postId,
-  currentStatus,
-  boardSlug,
-}: PostStatusSelectProps) {
+export function PostStatusSelect({ postId, currentStatus, boardSlug }: PostStatusSelectProps) {
   const { actions } = useFeedbackBoard();
   const [isPending, startTransition] = useTransition();
 
@@ -33,11 +23,7 @@ export function PostStatusSelect({
   };
 
   return (
-    <Select
-      defaultValue={currentStatus}
-      onValueChange={handleChange}
-      disabled={isPending}
-    >
+    <Select defaultValue={currentStatus} onValueChange={handleChange} disabled={isPending}>
       <SelectTrigger className="w-[160px]">
         <SelectValue />
       </SelectTrigger>

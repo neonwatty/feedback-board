@@ -21,17 +21,10 @@ export function PostCard({ post, boardSlug, isLoggedIn }: PostCardProps) {
         isLoggedIn={isLoggedIn}
       />
       <div className="flex-1 min-w-0">
-        <FeedbackLink
-          href={`/board/${boardSlug}/post/${post.id}`}
-          className="font-medium hover:underline"
-        >
+        <FeedbackLink href={`/board/${boardSlug}/post/${post.id}`} className="font-medium hover:underline">
           {post.title}
         </FeedbackLink>
-        {post.description && (
-          <p className="mt-1 text-sm text-muted-foreground line-clamp-2">
-            {post.description}
-          </p>
-        )}
+        {post.description && <p className="mt-1 text-sm text-muted-foreground line-clamp-2">{post.description}</p>}
         <div className="mt-2 flex items-center gap-3">
           <StatusBadge status={post.status} />
           <span className="flex items-center gap-1 text-xs text-muted-foreground">

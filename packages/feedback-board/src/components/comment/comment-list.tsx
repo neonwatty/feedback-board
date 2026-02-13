@@ -2,9 +2,7 @@ import { Separator } from "../ui/separator";
 import type { CommentWithAuthor } from "../../types";
 
 function timeAgo(date: string): string {
-  const seconds = Math.floor(
-    (new Date().getTime() - new Date(date).getTime()) / 1000
-  );
+  const seconds = Math.floor((new Date().getTime() - new Date(date).getTime()) / 1000);
   if (seconds < 60) return "just now";
   const minutes = Math.floor(seconds / 60);
   if (minutes < 60) return `${minutes}m ago`;
@@ -31,12 +29,8 @@ export function CommentList({ comments }: { comments: CommentWithAuthor[] }) {
           {i > 0 && <Separator className="mb-4" />}
           <div className="space-y-1">
             <div className="flex items-center gap-2 text-sm">
-              <span className="font-medium">
-                {comment.author_email ?? "Anonymous"}
-              </span>
-              <span className="text-muted-foreground">
-                {timeAgo(comment.created_at)}
-              </span>
+              <span className="font-medium">{comment.author_email ?? "Anonymous"}</span>
+              <span className="text-muted-foreground">{timeAgo(comment.created_at)}</span>
             </div>
             <p className="text-sm whitespace-pre-wrap">{comment.body}</p>
           </div>

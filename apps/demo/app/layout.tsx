@@ -49,14 +49,10 @@ export default async function RootLayout({
           }}
         />
       </head>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
-      >
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}>
         <Header />
         <FeedbackProviderWrapper user={feedbackUser}>
-          <main className="mx-auto w-full max-w-5xl flex-1 px-4 py-8">
-            {children}
-          </main>
+          <main className="mx-auto w-full max-w-5xl flex-1 px-4 py-8">{children}</main>
         </FeedbackProviderWrapper>
         <Footer />
       </body>

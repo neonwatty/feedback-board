@@ -9,14 +9,7 @@ export default defineConfig([
     splitting: false,
     sourcemap: true,
     clean: true,
-    external: [
-      "react",
-      "react-dom",
-      "next",
-      "next/link",
-      "next/navigation",
-      "@supabase/supabase-js",
-    ],
+    external: ["react", "react-dom", "next", "next/link", "next/navigation", "@supabase/supabase-js"],
     banner: {
       js: '"use client";',
     },
@@ -28,8 +21,6 @@ export default defineConfig([
     dts: true,
     splitting: false,
     sourcemap: true,
-    external: [
-      "@supabase/supabase-js",
-    ],
+    external: ["@supabase/supabase-js"],
   },
 ]);

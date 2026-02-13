@@ -3,8 +3,7 @@
 import Link from "next/link";
 import { useFeedbackBoard } from "../provider";
 
-interface FeedbackLinkProps
-  extends Omit<React.ComponentProps<typeof Link>, "href"> {
+interface FeedbackLinkProps extends Omit<React.ComponentProps<typeof Link>, "href"> {
   href: string;
 }
 
