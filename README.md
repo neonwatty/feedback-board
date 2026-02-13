@@ -74,9 +74,9 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ## Environment Variables
 
-| Variable | Description |
-|---|---|
-| `NEXT_PUBLIC_SUPABASE_URL` | Your Supabase project URL |
+| Variable                        | Description                        |
+| ------------------------------- | ---------------------------------- |
+| `NEXT_PUBLIC_SUPABASE_URL`      | Your Supabase project URL          |
 | `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Your Supabase anonymous/public key |
 
 ## Project Structure
