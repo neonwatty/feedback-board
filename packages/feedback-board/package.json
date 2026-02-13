@@ -2,6 +2,25 @@
   "name": "@neonwatty/feedback-board",
   "version": "0.1.0",
   "description": "Embeddable feedback board for Next.js + Supabase apps",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/neonwatty/feedback-board"
+  },
+  "homepage": "https://github.com/neonwatty/feedback-board#readme",
+  "bugs": {
+    "url": "https://github.com/neonwatty/feedback-board/issues"
+  },
+  "keywords": [
+    "feedback",
+    "board",
+    "nextjs",
+    "supabase",
+    "react",
+    "feature-requests",
+    "upvote",
+    "roadmap"
+  ],
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
@@ -20,7 +39,8 @@
   },
   "files": [
     "dist",
-    "migrations"
+    "migrations",
+    "examples"
   ],
   "scripts": {
     "build": "tsup",

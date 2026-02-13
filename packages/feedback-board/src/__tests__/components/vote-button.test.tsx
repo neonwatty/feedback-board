@@ -49,6 +49,21 @@ describe("VoteButton", () => {
     expect(screen.getByText("4")).toBeInTheDocument();
   });
 
+  it("applies custom className to button element", () => {
+    renderWithProvider(
+      <VoteButton
+        postId="post-1"
+        boardSlug="my-board"
+        voteCount={5}
+        hasVoted={false}
+        isLoggedIn={true}
+        className="my-custom-class"
+      />,
+    );
+    const button = screen.getByRole("button");
+    expect(button.className).toContain("my-custom-class");
+  });
+
   it("redirects to loginPath when not logged in", async () => {
     const user = userEvent.setup();
     // Mock window.location.href

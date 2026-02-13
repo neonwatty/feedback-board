@@ -1,7 +1,8 @@
 import { Badge } from "../ui/badge";
 import type { PostStatus } from "../../types";
+import { cn } from "../../utils";
 
-const statusConfig: Record<PostStatus, { label: string; className: string }> = {
+export const defaultStatusConfig: Record<PostStatus, { label: string; className: string }> = {
   idea: {
     label: "Idea",
     className: "bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-200",
@@ -30,15 +31,22 @@ const statusConfig: Record<PostStatus, { label: string; className: string }> = {
 
 export const STATUS_OPTIONS: PostStatus[] = ["idea", "under_review", "planned", "in_progress", "complete", "closed"];
 
-export function StatusBadge({ status }: { status: PostStatus }) {
-  const config = statusConfig[status];
+export interface StatusBadgeProps {
+  status: PostStatus;
+  className?: string;
+  statusClassNames?: Partial<Record<PostStatus, string>>;
+}
+
+export function StatusBadge({ status, className, statusClassNames }: StatusBadgeProps) {
+  const config = defaultStatusConfig[status];
+  const statusCls = statusClassNames?.[status];
   return (
-    <Badge variant="secondary" className={config.className}>
+    <Badge variant="secondary" className={cn(config.className, statusCls, className)}>
       {config.label}
     </Badge>
   );
 }
 
 export function getStatusLabel(status: PostStatus): string {
-  return statusConfig[status].label;
+  return defaultStatusConfig[status].label;
 }

@@ -8,8 +8,9 @@ import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, Di
 import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
 import { Plus } from "lucide-react";
+import { cn } from "../../utils";
 
-export function CreateBoardDialog() {
+export function CreateBoardDialog({ className }: { className?: string }) {
   const router = useRouter();
   const { actions, basePath } = useFeedbackBoard();
   const [open, setOpen] = useState(false);
@@ -34,7 +35,7 @@ export function CreateBoardDialog() {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
-        <Button>
+        <Button className={cn(className)}>
           <Plus className="mr-2 h-4 w-4" />
           New Board
         </Button>

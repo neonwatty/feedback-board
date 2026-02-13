@@ -12,11 +12,17 @@ interface FeedbackBoardContextValue {
 
 const FeedbackBoardContext = createContext<FeedbackBoardContextValue | null>(null);
 
+/** Props for the FeedbackBoardProvider component. */
 export interface FeedbackBoardProviderProps {
+  /** Server action implementations. The host creates "use server" wrappers that call the pure action functions. */
   actions: FeedbackBoardActions;
+  /** Currently authenticated user, or null if logged out. */
   user: FeedbackUser | null;
+  /** Base path prefix for all feedback routes. Defaults to "/feedback". Set to "" if feedback is at root. */
   basePath?: string;
+  /** Path to redirect unauthenticated users. Defaults to "/login". */
   loginPath?: string;
+  /** React children. */
   children: React.ReactNode;
 }
 

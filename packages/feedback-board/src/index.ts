@@ -41,7 +41,8 @@ export { PostStatusSelect } from "./components/post/post-status-select";
 export { CommentForm } from "./components/comment/comment-form";
 export { CommentList } from "./components/comment/comment-list";
 export { RoadmapBoard } from "./components/roadmap/roadmap-board";
-export { StatusBadge, STATUS_OPTIONS, getStatusLabel } from "./components/status/status-badge";
+export { StatusBadge, STATUS_OPTIONS, getStatusLabel, defaultStatusConfig } from "./components/status/status-badge";
+export type { StatusBadgeProps } from "./components/status/status-badge";
 export { FeedbackLink } from "./components/feedback-link";
 
 // Utilities

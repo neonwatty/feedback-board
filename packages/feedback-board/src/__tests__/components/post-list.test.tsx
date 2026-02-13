@@ -95,4 +95,13 @@ describe("PostList", () => {
     const titles = screen.getAllByRole("link").map((el) => el.textContent);
     expect(titles).toEqual(["First post", "Third post", "Second post"]);
   });
+
+  it("applies custom className to root div", () => {
+    const { container } = renderWithProvider(
+      <PostList posts={basePosts} boardSlug="my-board" isLoggedIn={true} className="my-custom-class" />,
+    );
+    const root = container.firstElementChild;
+    expect(root).toBeTruthy();
+    expect(root!.className).toContain("my-custom-class");
+  });
 });

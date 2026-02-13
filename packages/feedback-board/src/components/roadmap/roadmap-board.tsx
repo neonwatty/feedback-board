@@ -3,16 +3,18 @@ import { Card, CardContent } from "../ui/card";
 import { StatusBadge } from "../status/status-badge";
 import type { Post, PostStatus } from "../../types";
 import { ChevronUp } from "lucide-react";
+import { cn } from "../../utils";
 
 interface RoadmapBoardProps {
   posts: Post[];
   boardSlug: string;
+  className?: string;
 }
 
 // Show only active statuses in roadmap (not idea/closed)
 const ROADMAP_STATUSES: PostStatus[] = ["under_review", "planned", "in_progress", "complete"];
 
-export function RoadmapBoard({ posts, boardSlug }: RoadmapBoardProps) {
+export function RoadmapBoard({ posts, boardSlug, className }: RoadmapBoardProps) {
   const grouped = ROADMAP_STATUSES.reduce(
     (acc, status) => {
       acc[status] = posts.filter((p) => p.status === status).sort((a, b) => b.vote_count - a.vote_count);
@@ -22,7 +24,7 @@ export function RoadmapBoard({ posts, boardSlug }: RoadmapBoardProps) {
   );
 
   return (
-    <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+    <div className={cn("grid gap-4 md:grid-cols-2 lg:grid-cols-4", className)}>
       {ROADMAP_STATUSES.map((status) => (
         <div key={status} className="space-y-3">
           <div className="flex items-center gap-2">

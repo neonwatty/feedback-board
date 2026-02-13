@@ -1,5 +1,6 @@
 import { Separator } from "../ui/separator";
 import type { CommentWithAuthor } from "../../types";
+import { cn } from "../../utils";
 
 function timeAgo(date: string): string {
   const seconds = Math.floor((new Date().getTime() - new Date(date).getTime()) / 1000);
@@ -13,17 +14,17 @@ function timeAgo(date: string): string {
   return new Date(date).toLocaleDateString();
 }
 
-export function CommentList({ comments }: { comments: CommentWithAuthor[] }) {
+export function CommentList({ comments, className }: { comments: CommentWithAuthor[]; className?: string }) {
   if (comments.length === 0) {
     return (
-      <p className="py-8 text-center text-sm text-muted-foreground">
+      <p className={cn("py-8 text-center text-sm text-muted-foreground", className)}>
         No comments yet. Be the first to share your thoughts.
       </p>
     );
   }
 
   return (
-    <div className="space-y-4">
+    <div className={cn("space-y-4", className)}>
       {comments.map((comment, i) => (
         <div key={comment.id}>
           {i > 0 && <Separator className="mb-4" />}

@@ -6,8 +6,9 @@ import { useFeedbackBoard } from "../../provider";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import { Textarea } from "../ui/textarea";
+import { cn } from "../../utils";
 
-export function PostForm({ boardId }: { boardId: string }) {
+export function PostForm({ boardId, className }: { boardId: string; className?: string }) {
   const router = useRouter();
   const { actions, basePath } = useFeedbackBoard();
   const [error, setError] = useState<string | null>(null);
@@ -28,7 +29,7 @@ export function PostForm({ boardId }: { boardId: string }) {
   };
 
   return (
-    <form action={handleSubmit} className="space-y-4">
+    <form action={handleSubmit} className={cn("space-y-4", className)}>
       <input type="hidden" name="board_id" value={boardId} />
       <div className="space-y-2">
         <label htmlFor="title" className="text-sm font-medium">

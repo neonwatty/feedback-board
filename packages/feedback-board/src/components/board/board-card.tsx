@@ -2,11 +2,12 @@ import { FeedbackLink } from "../feedback-link";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "../ui/card";
 import { MessageSquare } from "lucide-react";
 import type { BoardWithPostCount } from "../../types";
+import { cn } from "../../utils";
 
-export function BoardCard({ board }: { board: BoardWithPostCount }) {
+export function BoardCard({ board, className }: { board: BoardWithPostCount; className?: string }) {
   return (
     <FeedbackLink href={`/board/${board.slug}`}>
-      <Card className="transition-colors hover:border-foreground/20">
+      <Card className={cn("transition-colors hover:border-foreground/20", className)}>
         <CardHeader>
           <CardTitle className="text-lg">{board.name}</CardTitle>
           {board.description && <CardDescription>{board.description}</CardDescription>}

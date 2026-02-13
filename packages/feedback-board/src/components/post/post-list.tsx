@@ -5,16 +5,18 @@ import { Button } from "../ui/button";
 import type { PostWithVoteStatus } from "../../types";
 import { ArrowUpDown, Clock, Filter } from "lucide-react";
 import { useState } from "react";
+import { cn } from "../../utils";
 
 interface PostListProps {
   posts: PostWithVoteStatus[];
   boardSlug: string;
   isLoggedIn: boolean;
+  className?: string;
 }
 
 type SortOption = "votes" | "newest" | "oldest";
 
-export function PostList({ posts, boardSlug, isLoggedIn }: PostListProps) {
+export function PostList({ posts, boardSlug, isLoggedIn, className }: PostListProps) {
   const [sort, setSort] = useState<SortOption>("votes");
 
   const sorted = [...posts].sort((a, b) => {
@@ -31,7 +33,7 @@ export function PostList({ posts, boardSlug, isLoggedIn }: PostListProps) {
   });
 
   return (
-    <div className="space-y-4">
+    <div className={cn("space-y-4", className)}>
       <div className="flex items-center gap-2">
         <span className="text-sm text-muted-foreground">Sort by:</span>
         <Button variant={sort === "votes" ? "secondary" : "ghost"} size="sm" onClick={() => setSort("votes")}>

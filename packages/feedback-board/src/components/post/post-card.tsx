@@ -3,16 +3,18 @@ import { VoteButton } from "./vote-button";
 import { StatusBadge } from "../status/status-badge";
 import { MessageSquare } from "lucide-react";
 import type { PostWithVoteStatus } from "../../types";
+import { cn } from "../../utils";
 
 interface PostCardProps {
   post: PostWithVoteStatus;
   boardSlug: string;
   isLoggedIn: boolean;
+  className?: string;
 }
 
-export function PostCard({ post, boardSlug, isLoggedIn }: PostCardProps) {
+export function PostCard({ post, boardSlug, isLoggedIn, className }: PostCardProps) {
   return (
-    <div className="flex items-start gap-3 rounded-lg border p-4 transition-colors hover:bg-muted/50">
+    <div className={cn("flex items-start gap-3 rounded-lg border p-4 transition-colors hover:bg-muted/50", className)}>
       <VoteButton
         postId={post.id}
         boardSlug={boardSlug}
